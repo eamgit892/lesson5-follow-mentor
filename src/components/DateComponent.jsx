@@ -1,4 +1,4 @@
-export const DateComponent = () => {
+export const DateComponent = ( {passDateFn} ) => {
     const date = new Date();
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 
         'August', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -7,6 +7,9 @@ export const DateComponent = () => {
     const day = date.getDay()
     const y = date.getFullYear()
     console.log(month);
+    let dateString = `${month} ${day} ${y}`;
     
-    return (<span>{month} {day} {y}</span>)
+    passDateFn(dateString) ; // for upper level component 
+    
+    return (<span>{dateString}</span>)
 }

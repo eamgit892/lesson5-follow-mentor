@@ -18,12 +18,18 @@ function App() {
   
   useEffect(() => { localStorage.setItem('tasks', JSON.stringify(tasks))}, [tasks])
 
+  /* 
+    Додавання дати в опис задачи 
+  */
+  const [dateState, useDateCallBack] = useState('')
+
+
   const addTask = (e) => {
     if (e.key == "Enter" && e.target.value !== '') {
       setTasks(
         [...tasks, {
           id: uuidv4(),
-          title: newTaskTitle, 
+          title: newTaskTitle + ' [created on ' + dateState + ']', 
           status: false
         }]
       )
@@ -32,20 +38,19 @@ function App() {
 
     }
   }
-  
+
+    
   return (
     <div className="container">
        <h1>Note your task</h1>
-       <DateComponent/>
+       <DateComponent passDateFn={useDateCallBack}/>
         <div className="input-field">
           <input type="text" className="task-name" id="taskInp"
-          // value={newTaskTitle}
           onChange={(e) => setNewTaskTitle(e.target.value)}
           onKeyDown = {addTask}
           />
           <label className='task-label' htmlFor='taskInp'>Task name</label>
         </div>
-       {/* <List tasks={tasks}/> */}
        <List tasks={tasks} setTasks={setTasks}/>
     </div>
   )
