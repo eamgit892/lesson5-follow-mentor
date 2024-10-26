@@ -9,7 +9,7 @@ export const DateComponent = ( {passDateFn} ) => {
     console.log(month);
     let dateString = `${month} ${day} ${y}`;
     
-    passDateFn(dateString) ; // for upper level component 
+    passDateFn(date.toLocaleDateString()) ; // for upper level component 
     
     return (<span>{dateString}</span>)
 }
