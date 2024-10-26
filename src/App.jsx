@@ -11,7 +11,7 @@ function App() {
     if (!localStorageTasks) return []
     else return JSON.parse(localStorageTasks);
   }
-
+  
   const [tasks, setTasks] = useState(syncLocalStorage);
 
   const [newTaskTitle, setNewTaskTitle] = useState('');
