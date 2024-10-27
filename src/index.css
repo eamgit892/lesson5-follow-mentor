@@ -22,6 +22,10 @@ span {
   display: none;
 }
 
+.hide-class {
+  display: none;
+}
+
 
 .todo div {
   width: 100%;
