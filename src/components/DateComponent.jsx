@@ -4,7 +4,7 @@ export const DateComponent = ( {passDateFn} ) => {
         'August', 'Sept', 'Oct', 'Nov', 'Dec'];
 
     const month = monthNames[date.getMonth()]
-    const day = date.getDay()
+    const day = date.getDate()
     const y = date.getFullYear()
     console.log(month);
     let dateString = `${month} ${day} ${y}`;

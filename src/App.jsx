@@ -16,7 +16,17 @@ function App() {
 
   const [newTaskTitle, setNewTaskTitle] = useState('');
   
-  useEffect(() => { localStorage.setItem('tasks', JSON.stringify(tasks))}, [tasks])
+  // count Undone tasks -------------------------------------------------------
+  const countUndoneTasks = () => tasks.filter(t => !t.status).length;
+
+  const [undone, setUndoneCounter] = useState(countUndoneTasks());
+
+  // end of countUndoneTasks --------------------------------------------------
+  
+  useEffect(() => {
+     localStorage.setItem('tasks', JSON.stringify(tasks));
+     setUndoneCounter(countUndoneTasks);
+    }, [tasks])
 
   /* 
     Додавання дати в опис задачи 
@@ -52,6 +62,8 @@ function App() {
           <label className='task-label' htmlFor='taskInp'>Task name</label>
         </div>
        <List tasks={tasks} setTasks={setTasks}/>
+       <hr />
+       <h4>Undone tasks: {undone}</h4>
     </div>
   )
 }
